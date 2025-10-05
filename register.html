@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Freelancer | Freelancer Connect</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Register as a Freelancer</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="post_project.html">Post Project</a></li>
+                <li><a href="view_freelancers.html">View Freelancers</a></li>
+                <li><a href="view_projects.html">View Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <h2>Freelancer Details</h2>
+            <form id="freelancerForm">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+
+                <label for="skill">Skill / Expertise:</label>
+                <input type="text" id="skill" placeholder="e.g., Web Development, Graphic Design" required>
+
+                <label for="experience">Experience (in years):</label>
+                <input type="number" id="experience" min="0" required>
+
+                <label for="rate">Hourly Rate (in ₹):</label>
+                <input type="number" id="rate" min="0" required>
+
+                <label for="bio">Short Bio / Description:</label>
+                <textarea id="bio" rows="4" placeholder="Write something about yourself..." required></textarea>
+
+                <button type="submit">Register Freelancer</button>
+            </form>
+
+            <p id="message" class="message"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Freelancer Connect</p>
+    </footer>
+
+    <script src="js/register.js"></script>
+</body>
+</html>
