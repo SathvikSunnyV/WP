@@ -1,5 +1,3 @@
-// js/view_projects.js
-// Full replacement file — safe, self-contained, uses per-item deletion only.
 
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('projectList');
@@ -83,9 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Initial render
   renderProjects();
 
-  // Expose for debugging if needed (optional)
   window._fc_renderProjects = renderProjects;
 });

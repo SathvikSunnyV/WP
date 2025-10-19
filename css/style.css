@@ -1,15 +1,9 @@
-/* ======================
-   Freelancer Connect — Enhanced Styles & Animations
-   Replace your css/style.css with this file.
-   Designed to work with your existing HTML structure.
-   ====================== */
 
-/* ---------- Variables ---------- */
 :root{
-  --bg-1: #0f1724;          /* deep slate */
-  --bg-2: #071020;          /* near-black blue */
-  --accent-1: #06b6d4;      /* cyan */
-  --accent-2: #7c3aed;      /* violet */
+  --bg-1: #0f1724;          
+  --bg-2: #071020;          
+  --accent-1: #06b6d4;      
+  --accent-2: #7c3aed;      
   --muted: #9aa7b2;
   --card-bg: rgba(255,255,255,0.06);
   --glass: rgba(255,255,255,0.06);
@@ -25,7 +19,6 @@
   --transition-slow: 420ms cubic-bezier(.2,.9,.2,1);
 }
 
-/* ---------- Base / Layout ---------- */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
@@ -41,7 +34,6 @@ body{
   padding-bottom:40px;
 }
 
-/* ---------- Subtle animated background blob in header ---------- */
 header{
   position: relative;
   overflow: hidden;
@@ -67,7 +59,6 @@ header::before{
   pointer-events:none;
 }
 
-/* ---------- Header text ---------- */
 header h1{
   margin:0;
   letter-spacing: -0.5px;
@@ -83,7 +74,6 @@ header p{
   font-size: 0.95rem;
 }
 
-/* ---------- Navigation ---------- */
 nav{
   margin-top:14px;
 }
@@ -130,14 +120,12 @@ nav a::after{
 }
 nav a:hover::after{ opacity:1; transform: translateY(0); }
 
-/* ---------- Main ---------- */
 main{
   max-width: var(--max-width);
   margin: 22px auto;
   padding: 0 18px;
 }
 
-/* ---------- Form Section (glass card) ---------- */
 .form-section{
   background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
   border-radius: var(--radius);
@@ -159,8 +147,6 @@ main{
   font-size:1.15rem;
   letter-spacing:0.1px;
 }
-
-/* ---------- Inputs (modern) ---------- */
 label{
   display:block;
   font-weight:600;
@@ -187,14 +173,12 @@ textarea{
 }
 input::placeholder, textarea::placeholder { color: rgba(230,245,255,0.35); font-style:italic; }
 
-/* focus state */
 input:focus, textarea:focus {
   border-color: rgba(124,58,237,0.9);
   box-shadow: 0 6px 24px rgba(124,58,237,0.14), 0 0 0 6px rgba(124,58,237,0.06);
   transform: translateY(-2px);
 }
 
-/* ---------- Buttons ---------- */
 button{
   display:inline-block;
   margin-top:18px;
@@ -217,7 +201,6 @@ button:hover{
   box-shadow: 0 20px 44px rgba(124,58,237,0.18), 0 8px 24px rgba(6,182,212,0.08);
 }
 
-/* active ripple-like pulse */
 button:active::after{
   content:"";
   position:absolute;
@@ -231,14 +214,12 @@ button:active::after{
   pointer-events:none;
 }
 
-/* clear-data button variant */
 .clear-data button{
   background: linear-gradient(90deg, #ff6b6b, #ef4444);
   color:white;
 }
 .clear-data button:hover{ transform: translateY(-3px); }
 
-/* ---------- Card list ---------- */
 .card-container{
   display:grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -262,14 +243,12 @@ button:active::after{
 .card p{ margin:6px 0; color: rgba(230,245,255,0.88); font-size:0.93rem; }
 .card strong{ color: #dff6ff; font-weight:700; }
 
-/* Hover microinteraction */
 .card:hover{
   transform: translateY(-8px) scale(1.01);
   box-shadow: 0 26px 60px rgba(2,6,23,0.6);
   background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
 }
 
-/* subtle badge for skills or rate (if you want to add) */
 .badge{
   display:inline-block;
   padding:6px 10px;
@@ -282,14 +261,12 @@ button:active::after{
   margin-right:8px;
 }
 
-/* ---------- Message styles ---------- */
 .message{
   margin-top:10px;
   font-weight:600;
   color: var(--muted);
 }
 
-/* ---------- Footer ---------- */
 footer{
   max-width: var(--max-width);
   margin: 30px auto 0 auto;
@@ -303,7 +280,6 @@ footer{
   box-shadow: 0 10px 30px rgba(2,6,23,0.5);
 }
 
-/* ---------- Responsive ---------- */
 @media (max-width:720px){
   .card-container{ grid-template-columns: 1fr; }
   nav ul{ gap:8px; }
@@ -311,9 +287,7 @@ footer{
   main{ padding: 0 14px; }
 }
 
-/* =======================
-   KEYFRAMES & Small Helpers
-   ======================= */
+
 @keyframes floatSlow{
   0%{ transform: translateY(0) rotate(12deg) }
   50%{ transform: translateY(-10px) rotate(18deg) }
@@ -330,7 +304,6 @@ footer{
   to{ opacity:1; transform: translateY(0) scale(1) }
 }
 
-/* staggered card entrance using nth-child */
 .card:nth-child(1){ animation-delay: 80ms; }
 .card:nth-child(2){ animation-delay: 160ms; }
 .card:nth-child(3){ animation-delay: 240ms; }
@@ -338,10 +311,8 @@ footer{
 .card:nth-child(5){ animation-delay: 400ms; }
 .card:nth-child(6){ animation-delay: 480ms; }
 
-/* ---------- Small utility classes ---------- */
 .text-muted{ color: var(--muted); font-size:0.92rem; }
 .center{ text-align:center; }
 
-/* ---------- Danger / Success utility (for clear/all messages) ---------- */
 .text-success{ color: var(--success); font-weight:700; }
 .text-danger{ color: var(--danger); font-weight:700; }
