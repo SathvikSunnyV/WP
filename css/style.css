@@ -1,174 +1,347 @@
-body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    margin: 0;
-    background-color: #f5f7fa;
-    color: #333;
+/* ======================
+   Freelancer Connect — Enhanced Styles & Animations
+   Replace your css/style.css with this file.
+   Designed to work with your existing HTML structure.
+   ====================== */
+
+/* ---------- Variables ---------- */
+:root{
+  --bg-1: #0f1724;          /* deep slate */
+  --bg-2: #071020;          /* near-black blue */
+  --accent-1: #06b6d4;      /* cyan */
+  --accent-2: #7c3aed;      /* violet */
+  --muted: #9aa7b2;
+  --card-bg: rgba(255,255,255,0.06);
+  --glass: rgba(255,255,255,0.06);
+  --glass-strong: rgba(255,255,255,0.08);
+  --success: #16a34a;
+  --danger: #ef4444;
+  --radius: 14px;
+  --soft-shadow: 0 6px 22px rgba(2,6,23,0.55);
+  --glass-border: rgba(255,255,255,0.06);
+  --glass-highlight: rgba(255,255,255,0.02);
+  --max-width: 1000px;
+  --transition-fast: 220ms cubic-bezier(.2,.9,.2,1);
+  --transition-slow: 420ms cubic-bezier(.2,.9,.2,1);
 }
 
-header {
-    background-color: #004d80;
-    color: white;
-    text-align: center;
-    padding: 20px 10px;
+/* ---------- Base / Layout ---------- */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.08), transparent 8%),
+              radial-gradient(800px 400px at 90% 90%, rgba(6,182,212,0.06), transparent 6%),
+              linear-gradient(180deg,var(--bg-1), var(--bg-2));
+  color: #e6eef6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+  padding-bottom:40px;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2rem;
+/* ---------- Subtle animated background blob in header ---------- */
+header{
+  position: relative;
+  overflow: hidden;
+  padding: 34px 18px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 6px 30px rgba(2,6,23,0.45);
+  backdrop-filter: blur(6px) saturate(120%);
+}
+header::before{
+  content:"";
+  position:absolute;
+  left:-10%;
+  top:-30%;
+  width:420px;
+  height:420px;
+  background: radial-gradient(circle at 30% 30%, rgba(124,58,237,0.22), transparent 30%),
+              radial-gradient(circle at 70% 70%, rgba(6,182,212,0.18), transparent 30%);
+  filter: blur(42px);
+  transform: rotate(12deg);
+  animation: floatSlow 8s linear infinite;
+  opacity:0.95;
+  pointer-events:none;
 }
 
-header p {
-    margin-top: 5px;
-    font-size: 1rem;
-    color: #dfe8f2;
+/* ---------- Header text ---------- */
+header h1{
+  margin:0;
+  letter-spacing: -0.5px;
+  font-size: clamp(1.35rem, 2.8vw, 2.2rem);
+  font-weight:700;
+  color: #ffffff;
+  text-shadow: 0 6px 18px rgba(7,10,18,0.55);
+}
+header p{
+  margin:8px 0 0 0;
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 0.95rem;
 }
 
-nav ul {
-    list-style: none;
-    margin: 10px 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+/* ---------- Navigation ---------- */
+nav{
+  margin-top:14px;
+}
+nav ul{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  padding:0;
+  margin:12px 0 0 0;
+  list-style:none;
+  flex-wrap:wrap;
+}
+nav a{
+  display:inline-block;
+  position:relative;
+  padding:8px 14px;
+  border-radius:10px;
+  color: #0b1220;
+  background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(250,250,250,0.95));
+  font-weight:600;
+  text-decoration:none;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.35);
+  transform: translateY(0);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  font-size:0.95rem;
+}
+nav a:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.45);
+}
+nav a::after{
+  content:"";
+  position:absolute;
+  left:6px;
+  right:6px;
+  bottom:-8px;
+  height:6px;
+  background: linear-gradient(90deg,var(--accent-1), var(--accent-2));
+  border-radius:4px;
+  opacity:0;
+  transform: translateY(6px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+nav a:hover::after{ opacity:1; transform: translateY(0); }
+
+/* ---------- Main ---------- */
+main{
+  max-width: var(--max-width);
+  margin: 22px auto;
+  padding: 0 18px;
 }
 
-nav ul li {
-    margin: 6px 12px;
+/* ---------- Form Section (glass card) ---------- */
+.form-section{
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-radius: var(--radius);
+  border: 1px solid var(--glass-border);
+  padding: 26px;
+  box-shadow: var(--soft-shadow);
+  backdrop-filter: blur(6px) saturate(130%);
+  transform: translateY(0);
+  transition: transform var(--transition-slow), box-shadow var(--transition-fast);
+}
+.form-section:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(2,6,23,0.55);
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    background-color: #007acc;
-    padding: 8px 14px;
-    border-radius: 6px;
-    transition: background 0.3s;
+.form-section h2{
+  margin:0 0 10px 0;
+  color: #fff;
+  font-size:1.15rem;
+  letter-spacing:0.1px;
 }
 
-nav ul li a:hover {
-    background-color: #005c99;
+/* ---------- Inputs (modern) ---------- */
+label{
+  display:block;
+  font-weight:600;
+  font-size:0.9rem;
+  margin-top:14px;
+  color: #d7e6f3;
+}
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+textarea{
+  width:100%;
+  padding:11px 12px;
+  margin-top:6px;
+  background: rgba(6,12,20,0.35);
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #eef7ff;
+  font-size:0.98rem;
+  border-radius:10px;
+  outline:none;
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
+  box-shadow: inset 0 -4px 10px rgba(0,0,0,0.25);
+}
+input::placeholder, textarea::placeholder { color: rgba(230,245,255,0.35); font-style:italic; }
+
+/* focus state */
+input:focus, textarea:focus {
+  border-color: rgba(124,58,237,0.9);
+  box-shadow: 0 6px 24px rgba(124,58,237,0.14), 0 0 0 6px rgba(124,58,237,0.06);
+  transform: translateY(-2px);
 }
 
-main {
-    padding: 20px;
-    max-width: 900px;
-    margin: 0 auto;
+/* ---------- Buttons ---------- */
+button{
+  display:inline-block;
+  margin-top:18px;
+  padding:10px 16px;
+  border-radius:12px;
+  border:none;
+  cursor:pointer;
+  font-weight:700;
+  font-size:0.98rem;
+  letter-spacing:0.2px;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  position:relative;
+  overflow:hidden;
+  color: #071126;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  box-shadow: 0 12px 30px rgba(124,58,237,0.14), 0 6px 18px rgba(6,182,212,0.08);
+}
+button:hover{
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 20px 44px rgba(124,58,237,0.18), 0 8px 24px rgba(6,182,212,0.08);
 }
 
-.form-section {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 25px;
+/* active ripple-like pulse */
+button:active::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:200%;
+  height:200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.02) 40%, transparent 41%);
+  transform: translate(-50%,-50%) scale(0.2);
+  animation: buttonPulse 420ms ease-out;
+  pointer-events:none;
 }
 
-.form-section h2 {
-    color: #004d80;
-    margin-bottom: 20px;
+/* clear-data button variant */
+.clear-data button{
+  background: linear-gradient(90deg, #ff6b6b, #ef4444);
+  color:white;
+}
+.clear-data button:hover{ transform: translateY(-3px); }
+
+/* ---------- Card list ---------- */
+.card-container{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap:18px;
+  margin-top:22px;
+}
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border-radius:12px;
+  padding:14px;
+  border:1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 8px 28px rgba(2,6,23,0.5);
+  transform-origin:center;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  overflow:hidden;
+  opacity:0;
+  transform: translateY(14px) scale(0.995);
+  animation: cardIn 520ms forwards cubic-bezier(.2,.9,.2,1);
+}
+.card h3{ margin:0 0 8px 0; color: #ffffff; font-size:1.05rem; }
+.card p{ margin:6px 0; color: rgba(230,245,255,0.88); font-size:0.93rem; }
+.card strong{ color: #dff6ff; font-weight:700; }
+
+/* Hover microinteraction */
+.card:hover{
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 26px 60px rgba(2,6,23,0.6);
+  background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
 }
 
-form {
-    display: flex;
-    flex-direction: column;
+/* subtle badge for skills or rate (if you want to add) */
+.badge{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:0.82rem;
+  background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.03);
+  color: #eaf7ff;
+  margin-right:8px;
 }
 
-label {
-    font-weight: bold;
-    margin-top: 10px;
+/* ---------- Message styles ---------- */
+.message{
+  margin-top:10px;
+  font-weight:600;
+  color: var(--muted);
 }
 
-input, textarea {
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
+/* ---------- Footer ---------- */
+footer{
+  max-width: var(--max-width);
+  margin: 30px auto 0 auto;
+  padding: 16px;
+  border-radius: 12px;
+  text-align:center;
+  color: rgba(230,245,255,0.9);
+  font-size:0.9rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.5);
 }
 
-button {
-    background-color: #007acc;
-    color: white;
-    padding: 10px 14px;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    margin-top: 20px;
-    cursor: pointer;
-    transition: background 0.3s;
+/* ---------- Responsive ---------- */
+@media (max-width:720px){
+  .card-container{ grid-template-columns: 1fr; }
+  nav ul{ gap:8px; }
+  nav a{ padding:8px 10px; font-size:0.9rem; }
+  main{ padding: 0 14px; }
 }
 
-button:hover {
-    background-color: #005c99;
+/* =======================
+   KEYFRAMES & Small Helpers
+   ======================= */
+@keyframes floatSlow{
+  0%{ transform: translateY(0) rotate(12deg) }
+  50%{ transform: translateY(-10px) rotate(18deg) }
+  100%{ transform: translateY(0) rotate(12deg) }
 }
 
-.message {
-    margin-top: 15px;
-    font-weight: bold;
+@keyframes buttonPulse{
+  0%{ transform: translate(-50%,-50%) scale(0.2); opacity:0.8 }
+  60%{ transform: translate(-50%,-50%) scale(0.85); opacity:0.5 }
+  100%{ transform: translate(-50%,-50%) scale(1.1); opacity:0 }
 }
 
-.card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
-    margin-top: 25px;
+@keyframes cardIn{
+  to{ opacity:1; transform: translateY(0) scale(1) }
 }
 
-.card {
-    background-color: white;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-}
+/* staggered card entrance using nth-child */
+.card:nth-child(1){ animation-delay: 80ms; }
+.card:nth-child(2){ animation-delay: 160ms; }
+.card:nth-child(3){ animation-delay: 240ms; }
+.card:nth-child(4){ animation-delay: 320ms; }
+.card:nth-child(5){ animation-delay: 400ms; }
+.card:nth-child(6){ animation-delay: 480ms; }
 
-.card:hover {
-    transform: scale(1.02);
-}
+/* ---------- Small utility classes ---------- */
+.text-muted{ color: var(--muted); font-size:0.92rem; }
+.center{ text-align:center; }
 
-.card h3 {
-    color: #004d80;
-    margin-bottom: 10px;
-}
-
-.clear-data {
-    text-align: center;
-    margin-top: 40px;
-}
-
-.clear-data button {
-    background-color: #c0392b;
-}
-
-.clear-data button:hover {
-    background-color: #922b21;
-}
-
-.note {
-    color: #666;
-    font-size: 0.9rem;
-    margin-top: 5px;
-}
-
-footer {
-    background-color: #004d80;
-    color: white;
-    text-align: center;
-    padding: 12px;
-    margin-top: 40px;
-    font-size: 0.9rem;
-}
-
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 1.6rem;
-    }
-
-    nav ul li a {
-        padding: 6px 10px;
-        font-size: 0.9rem;
-    }
-
-    main {
-        padding: 15px;
-    }
-}
+/* ---------- Danger / Success utility (for clear/all messages) ---------- */
+.text-success{ color: var(--success); font-weight:700; }
+.text-danger{ color: var(--danger); font-weight:700; }
